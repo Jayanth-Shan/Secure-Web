@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secure Web</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Secure Web</h1>
+      <p>Protecting your browsing experience</p>
+    </header>
+    
+    <div class="status-container">
+      <div class="status-item">
+        <div class="status-icon" id="phishing-status">✓</div>
+        <div class="status-text">Phishing Protection</div>
+      </div>
+      
+      <div class="status-item">
+        <div class="status-icon" id="https-status">✓</div>
+        <div class="status-text">HTTPS Enforcement</div>
+      </div>
+      
+      <div class="status-item">
+        <div class="status-icon" id="tracker-status">✓</div>
+        <div class="status-text">Tracker Blocking</div>
+      </div>
+      
+      <div class="status-item">
+        <div class="status-icon" id="form-status">✓</div>
+        <div class="status-text">Form Protection</div>
+      </div>
+      
+      <div class="status-item">
+        <div class="status-icon" id="redirect-status">✓</div>
+        <div class="status-text">Redirect Protection</div>
+      </div>
+      
+      <div class="status-item">
+        <div class="status-icon" id="clickjacking-status">✓</div>
+        <div class="status-text">Clickjacking Protection</div>
+      </div>
+      
+      <div class="status-item">
+        <div class="status-icon" id="js-status">✓</div>
+        <div class="status-text">JS Protection</div>
+      </div>
+      
+      <div class="status-item">
+        <div class="status-icon" id="popup-status">✓</div>
+        <div class="status-text">Popup Protection</div>
+      </div>
+      
+      <div class="status-item">
+        <div class="status-icon" id="breach-status">✓</div>
+        <div class="status-text">Breach Alert</div>
+      </div>
+    </div>
+    
+    <div class="stats-container">
+      <h2>Protection Stats</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value" id="phishing-blocked">0</div>
+          <div class="stat-label">Phishing Sites Blocked</div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-value" id="trackers-blocked">0</div>
+          <div class="stat-label">Trackers Blocked</div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-value" id="https-upgrades">0</div>
+          <div class="stat-label">HTTPS Upgrades</div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-value" id="suspicious-forms">0</div>
+          <div class="stat-label">Suspicious Forms</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="actions">
+      <button id="check-email-btn">Check Email for Breaches</button>
+      <button id="options-btn">Settings</button>
+    </div>
+    
+    <div id="breach-check-container" class="hidden">
+      <input type="email" id="breach-email" placeholder="Enter your email">
+      <button id="submit-email-btn">Check</button>
+      <div id="breach-results"></div>
+    </div>
+    
+    <footer>
+      <p>Secure Web v1.0.0</p>
+    </footer>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

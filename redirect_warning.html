@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirect Warning - Secure Web</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff3cd;
+      color: #856404;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    
+    .warning-container {
+      max-width: 600px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 30px;
+      margin: 20px;
+    }
+    
+    .warning-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+    
+    h1 {
+      color: #f39c12;
+      margin-top: 0;
+    }
+    
+    .redirect-list {
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-radius: 4px;
+      margin: 20px 0;
+      text-align: left;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    
+    .redirect-item {
+      margin-bottom: 5px;
+      word-break: break-all;
+      font-family: monospace;
+      font-size: 14px;
+    }
+    
+    .button-row {
+      margin-top: 30px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.2s;
+    }
+    
+    button:hover {
+      background-color: #2980b9;
+    }
+    
+    .warning-details {
+      margin-top: 20px;
+      text-align: left;
+    }
+    
+    .warning-details h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    
+    .warning-details ul {
+      margin-top: 0;
+      padding-left: 20px;
+    }
+    
+    .warning-details li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="warning-container">
+    <div class="warning-icon">⚠️</div>
+    <h1>Redirect Warning</h1>
+    <p>Secure Web has detected an unusual number of redirects in a short period of time.</p>
+    
+    <p>This tab has been closed to protect you from potential redirect abuse, which could be:</p>
+    
+    <div class="warning-details">
+      <ul>
+        <li>A malicious redirect chain attempting to lead you to dangerous sites</li>
+        <li>An attempt to confuse or disorient you through excessive redirects</li>
+        <li>A technical issue with the website you were visiting</li>
+      </ul>
+    </div>
+    
+    <div id="redirect-history-container">
+      <h2>Redirect History:</h2>
+      <div class="redirect-list" id="redirect-list">
+        <!-- Redirect history will be populated here -->
+        <div class="redirect-item">No redirect history available</div>
+      </div>
+    </div>
+    
+    <div class="button-row">
+      <button id="new-tab-button">Open New Tab</button>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set up button action
+      document.getElementById('new-tab-button').addEventListener('click', () => {
+        chrome.tabs.create({ url: 'chrome://newtab' });
+      });
+      
+      // Try to get redirect history from storage
+      chrome.storage.local.get("lastRedirectChain", (data) => {
+        if (data.lastRedirectChain && data.lastRedirectChain.length > 0) {
+          const redirectList = document.getElementById('redirect-list');
+          redirectList.innerHTML = '';
+          
+          data.lastRedirectChain.forEach((url, index) => {
+            const item = document.createElement('div');
+            item.className = 'redirect-item';
+            item.textContent = `${index + 1}. ${url}`;
+            redirectList.appendChild(item);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
