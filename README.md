@@ -1,6 +1,6 @@
 # Secure-Web
 A chrome web extension that flags suspicious activities on the web
-Secure Web is a lightweight Chrome extension that protects users from common online threats in real time. It features phishing detection (via Google Safe Browsing), HTTPS enforcement, tracker blocking, suspicious form alerts, password breach checks, and more—all accessible through a simple popup interface. Designed for speed and built on Manifest V3, it offers seamless, everyday web protection without slowing you down.
+Secure Web is a lightweight Chrome extension that protects users from common online threats in real time. It features real time phishing detection (via Google Safe Browsing API Key), HTTPS enforcement, tracker blocking, suspicious form alerts, password breach checks, and more—all accessible through a simple popup interface. Designed for speed and built on Manifest V3, it offers seamless, everyday web protection without slowing you down.
 
 Installation:
 1) Download the ZIP file provided with the project.
